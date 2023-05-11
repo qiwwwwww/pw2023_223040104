@@ -1,4 +1,4 @@
-<?php
+`<?php
     $nd = 'muhammad ';
     $nt = 'rizqi' ;
     ?>
