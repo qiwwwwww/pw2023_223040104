@@ -105,14 +105,6 @@
           />
           <h3 class="event-card-title">muaythai</h3>
         </div>
-        <div class="event-card">
-          <img
-            src="img/ufc jpeg2.jpg"
-            alt="matrial arts"
-            class="event-card-img"
-          />
-          <h3 class="event-card-title">UFC</h3>
-        </div>
       </div>
     </section>
     <!-- menu section end-->
