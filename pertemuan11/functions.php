@@ -1,10 +1,10 @@
 <?php
 // Sesuaikan dengan URL project kalian
-define('BASE_URL', '/pw2023_043040023_e/kuliah/pertemuan9/');
+define('BASE_URL', '/pw2023_223040104/kuliah/pertemuan11/');
 
 function koneksi()
 {
-  $conn = mysqli_connect('localhost', 'root', 'root', 'pw2023_a_043040023') or die('KONEKSI GAGAL!');
+  $conn = mysqli_connect('localhost', 'root', '', 'pw2023_223040104') or die('KONEKSI GAGAL!');
   return $conn;
 }
 

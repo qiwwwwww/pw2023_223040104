@@ -167,16 +167,17 @@ body {
 
 .event .row {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   margin-top: 5rem;
-  justify-content: center;
+  justify-content: space-between;
 }
 .event-card {
   text-align: center;
 }
 .event .row .event-card img {
   border-radius: 10%;
-  width: 80%;
+  width: 90%;
+  margin-right: 20px;
 }
 .event .row .event-card .event-card-title {
   margin-top: 1.5rem;

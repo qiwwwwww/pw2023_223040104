@@ -18,7 +18,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- stylesheet -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/tubes.css" />
   </head>
   <body>
     <!-- navbar start -->
@@ -47,7 +47,7 @@
     <section class="hero" id="home">
       <main class="content">
         <h1>BOOST YOUR ADRENALINE</h1>
-        <a href="#" class="cta"></a>
+        <a href="#" class="cta"><p>BELI TIKET</p></a>
       </main>
     </section>
     <!-- Hero section end -->
