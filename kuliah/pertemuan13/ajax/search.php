@@ -1,16 +1,21 @@
-<?php require('partials/header.php'); ?>
-<?php require('partials/nav.php'); ?>
+<?php 
+require '../functions.php';
+$keyword = $_GET['keyword'];
+$query = "SELECT * FROM 
+        mahasiswa 
+    WHERE
+         nama LIKE '%$keyword%' OR
+         
+         jurusan LIKE '%$keyword%'
+         ";
+         $students = query($query); 
 
-<div class="container mt-3">
-  <h1>Halaman Home</h1>
+?>
 
-  <h3>Daftar Mahasiswa</h3>
-
-  <a href="tambah.php" class="btn btn-primary">Tambah Data Mahasiswa</a>
-
-  <table class="table">
-    <thead>
-      <tr>
+<?php  if($students) :  ?>
+      <table class="table">
+        <thead>
+          <tr>
         <th scope="col">#</th>
         <th scope="col">Gambar</th>
         <th scope="col">NIM</th>
@@ -37,9 +42,16 @@
             <a href="" class="badge text-bg-danger">hapus</a>
           </td>
         </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
-</div>
-
-<?php require('partials/footer.php'); ?>
+        <?php endforeach; ?>
+      </tbody>
+      
+      <?php else : ?>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="alert alert-danger" role="alert"> 
+              simple danger alert—check it out!
+            </div>
+          </div>
+        </div>
+        <?php endif ; ?>
+      </div>

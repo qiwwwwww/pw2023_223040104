@@ -8,9 +8,30 @@
 
   <a href="tambah.php" class="btn btn-primary">Tambah Data Mahasiswa</a>
 
-  <table class="table">
-    <thead>
-      <tr>
+  <div class="row">
+<div class="col-md-6">
+  <form action="" method="get">
+<div class="input-group my-3">
+  <input type="search" class="form-control" 
+     placeholder="search student" 
+     name = "keyword"
+     id = "keyword" autofocus autocomplite = "off"
+      aria-label="Recipient's username" 
+        aria-describedby="button-addon2">
+  <button class="btn btn-primary" type="submit" name = "button-search" id="button-search">search</button>
+</div>
+</from>
+</div>
+  </div>
+
+  
+  
+  <div id= "search-container">
+     
+    <?php  if($students) :  ?>
+      <table class="table">
+        <thead>
+          <tr>
         <th scope="col">#</th>
         <th scope="col">Gambar</th>
         <th scope="col">NIM</th>
@@ -37,9 +58,21 @@
             <a href="" class="badge text-bg-danger">hapus</a>
           </td>
         </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
-</div>
-
-<?php require('partials/footer.php'); ?>
+        <?php endforeach; ?>
+      </tbody>
+      
+      <?php else : ?>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="alert alert-danger" role="alert"> 
+              simple danger alert—check it out!
+            </div>
+          </div>
+        </div>
+        <?php endif ; ?>
+      </div>
+        
+      </table>
+    </div>
+    
+    <?php require('partials/footer.php'); ?>

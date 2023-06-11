@@ -2,15 +2,13 @@
 // Sesuaikan dengan URL project kalian
 define('BASE_URL', '/pw2023_223040104/tubes/admin/');
 
-function koneksi()
-{
+
   $conn = mysqli_connect('localhost', 'root', '', 'tubes') or die('KONEKSI GAGAL!');
-  return $conn;
-}
+
 
 function query($query)
 {
-  $conn = koneksi();
+  global $conn;
   $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
   $rows = [];
@@ -21,52 +19,107 @@ function query($query)
   return $rows;
 }
 
-function dd($value)
-{
-  echo "<pre>";
-  var_dump($value);
-  echo "</pre>";
-  die;
-}
-
-function uriIS($uri)
-{
-  return ($_SERVER["REQUEST_URI"] === $uri) ? 'active' : '';
-}
-
+// registrasi user
 
 function registrasi($data) {
-  $conn = koneksi();
+  global $conn;
 
-   $username =  strtolower(stripslashes($data["username"]));
-   $email =  $data["email"];
-   $password = mysqli_real_escape_string($conn, $data["password"]);
-   $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+  $username = strtolower(stripslashes($data["username"]));
+  $email = $data["email"];
+  $password = mysqli_real_escape_string($conn, $data["password"]);
+  $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+  $level = $data["level"];
 
-
-   // cek user name sudah ada atau belum
-   $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
-
-   if( mysqli_fetch_assoc($result)) {
+  // Check if the username already exists
+  $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
+  if (mysqli_fetch_assoc($result)) {
     echo "<script>
-            alert('username sudah terdaftar!');
-            </script>";
-            return false;
-   }
-
-   // cek konfirmasi password
-   if ($password !== $password2) {
-    echo "<script>
-          alert('konfirmasi password tidak sesuai!');
+            alert('Username sudah terdaftar!');
           </script>";
-          return false;
-   }
+    return false;
+  }
 
-  // enskripsi password
-$password = password_hash($password, PASSWORD_DEFAULT);
+  // Check password confirmation
+  if ($password !== $password2) {
+    echo "<script>
+            alert('Konfirmasi password tidak sesuai!');
+          </script>";
+    return false;
+  }
 
-   // tambahkan user baru ke data base
-   mysqli_query($conn, "INSERT INTO user VALUES(null, '$username', '$email', '$password')");
+  // Encrypt the password
+  $password = password_hash($password, PASSWORD_DEFAULT);
 
-   return mysqli_affected_rows($conn);
+  // Add the new user to the database
+  mysqli_query($conn, "INSERT INTO user (`id`, `username`, `email`, `password`, `level`)
+                      VALUES(null, '$username', '$email', '$password', '$level')");
+  
+  return mysqli_affected_rows($conn);
 }
+
+
+// function registrasi($data) {
+//   global $conn;
+
+//    $username =  strtolower(stripslashes($data["username"]));
+//    $email =  $data["email"];
+//    $password = mysqli_real_escape_string($conn, $data["password"]);
+//    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+//   $level = $data ["level"];
+
+//    // cek user name sudah ada atau belum
+//    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
+
+//    if( mysqli_fetch_assoc($result)) {
+//     echo "<script>
+//             alert('username sudah terdaftar!');
+//             </script>";
+//             return false;
+//    }
+
+//    // cek konfirmasi password
+//    if ($password !== $password2) {
+//     echo "<script>
+//           alert('konfirmasi password tidak sesuai!');
+//           </script>";
+//           return false;
+//    }
+//    // enskripsi password
+//    $password = password_hash($password, PASSWORD_DEFAULT);
+
+  
+//   // tambahkan user baru ke data base
+//   mysqli_query($conn, "INSERT INTO user (`id`, `username`, `email`, `password`, `level`)
+//   VALUES(null, '$username', '$email', '$password', '$level')");
+  
+//   return mysqli_affected_rows($conn);
+  
+// }
+
+
+
+
+  //function hapus
+
+  function deleted($id) {
+
+    global $conn;
+    mysqli_query($conn, "DELETE FROM user WHERE id  = $id");
+
+    return mysqli_affected_rows($conn);
+  }
+
+
+ //fanction cari
+ function cari($keyword) {
+
+  $query = "SELECT * FROM  user WHERE username LIKE '%$keyword%' OR
+                                      email LIKE '%$keyword%' OR                          
+  ";
+  return query($query);
+
+
+ }
+
+
+?>

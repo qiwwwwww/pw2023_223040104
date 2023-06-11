@@ -1,0 +1,45 @@
+footer {
+  max-width: inherit;
+  background-color: #101010;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 3rem;
+}
+
+footer .social {
+  padding: 1rem 0;
+  margin-left: 3rem;
+}
+
+footer .social a {
+  color: #fff;
+  margin: 0.5rem;
+  text-decoration: none;
+}
+
+footer .social a:hover {
+  color: var(--w-unpas1);
+}
+
+footer .links {
+  margin-bottom: 1.3rem;
+  margin-left: 4rem;
+}
+
+footer .links a {
+  color: #fff;
+  padding: 0.7rem 0.5rem;
+}
+
+footer .links a:hover {
+  color: var(--w-unpas1);
+}
+
+footer .credits {
+  font-size: 0.8rem;
+  margin-left: 3rem;
+}
+
+font .credits a {
+  color: var(--w-unpas2);
+}

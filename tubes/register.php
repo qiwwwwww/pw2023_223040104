@@ -1,8 +1,11 @@
 <?php 
+
+
+
+
  require 'function.php';
 
 if( isset($_POST["register"]) ) {
-
   if (registrasi($_POST) > 0) {
     echo "<script>
       alert('user baru sudah ditambahkan!');
@@ -51,14 +54,16 @@ if( isset($_POST["register"]) ) {
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" name="password" id="inputPassword3">
+      <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="password" >
     </div>
   </div>
     <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" name="password2" id="inputPassword3">
-    </div>
+      <input type="password" class="form-control" name="password2" id="inputPassword3" placeholder=" confrim password">
+    </div>  
+      <input type="hidden"  name="level" value="user"  >
+    
   </div>
   <div class="d-grid gap-2 col-6 mx-auto">
   <button class="btn btn-dark" type="submit" name="register">Sing in</button>
@@ -67,3 +72,5 @@ if( isset($_POST["register"]) ) {
 </div>
 </body>
 </html>
+
+

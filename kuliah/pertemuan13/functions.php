@@ -20,21 +20,6 @@ function query($query)
 
   return $rows;
 }
-function tambah($data) {
-  $conn = koneksi ();
-
-  $nim = $data['nim'];
-  $nama = $data['nama'];
-  $email = $data['email'];
-  $jurusan = $data['jurusan'];
-  $gambar = $data['gambar'];
-
-  $query = "INSERT INTO
-            mahasiwa
-            VALUES
-            (null, '$nim', '$nama', '$email', '$jurusan', '$gambar')";
-}
-
 
 function dd($value)
 {

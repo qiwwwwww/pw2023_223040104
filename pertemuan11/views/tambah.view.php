@@ -1,5 +1,5 @@
 <?php require('partials/header.php'); ?>
-
+<?php require('partials/nav.php'); ?>
 
 <div class="container mt-3">
   <h1>Tambah Data Mahasiswa</h1>
@@ -9,7 +9,7 @@
       <form action="">
         <div class="mb-3 w-25">
           <label for="nim" class="form-label">NIM</label>
-          <input type="text" class="form-control" name="nim" id="nim" maxlength="30" autofocus required>
+          <input type="text" class="form-control" name="nim" id="nim" maxlength="9" autofocus required>
         </div>
         <div class="mb-3">
           <label for="nama" class="form-label">Nama</label>

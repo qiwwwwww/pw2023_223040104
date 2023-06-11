@@ -6,7 +6,7 @@
 
   <div class="row">
     <div class="col-md-8">
-      <form action="" method="post">
+      <form action="">
         <div class="mb-3 w-25">
           <label for="nim" class="form-label">NIM</label>
           <input type="text" class="form-control" name="nim" id="nim" maxlength="9" autofocus required>
